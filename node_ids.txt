@@ -1,4 +1,4 @@
-pop_id-1 через пробел по желанию можно добавить коментврий
+pop_id-1 optionally you can add a comment after a space
 pop_id-2
 pop_id-3
 ...
