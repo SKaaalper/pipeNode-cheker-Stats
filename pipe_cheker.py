@@ -33,9 +33,9 @@ def send_telegram_message(text):
         if not response.ok:
             print(f"[Telegram ❌] {response.status_code}: {response.text}")
         else:
-            print("[Telegram ✅] Уведомление отправлено.")
+            print("[Telegram ✅] Notification sent.")
     except Exception as e:
-        print(f"[Telegram ❌] Ошибка: {e}")
+        print(f"[Telegram ❌] Error: {e}")
 
 
 def check_all_nodes():
@@ -54,7 +54,7 @@ def check_all_nodes():
 
     for idx, (node_id, comment) in enumerate(node_list, 1):
         label = f"pop-{node_id}" + (f" ({comment})" if comment else "")
-        print(f"[{idx}/{len(node_list)}] 🔍 Проверка {label}...")
+        print(f"[{idx}/{len(node_list)}] 🔍 Checking {label}...")
 
         try:
             url = URL_TEMPLATE.format(node_id)
@@ -62,7 +62,7 @@ def check_all_nodes():
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "html.parser")
 
-            # Статус
+            # Status
             status = "-"
             identity_labels = soup.select("div.identity-label")
             for lbl in identity_labels:
@@ -118,7 +118,7 @@ def check_all_nodes():
 
         except Exception as e:
             results.append([label, "Error", "-", "-", "-", "-", f"Err: {e}"])
-            telegram_lines.append(f"*{label}* ❌\nОшибка при проверке: `{e}`\n")
+            telegram_lines.append(f"*{label}* ❌\nError during check: `{e}`\n")
 
         time.sleep(random.uniform(*REQUEST_DELAY))
 
@@ -133,11 +133,11 @@ def check_all_nodes():
         full_message = "📡 *Pipe Node Check Report*\n\n" + "\n\n".join(telegram_lines)
         send_telegram_message(full_message)
 
-print("🚀 Старт мониторинга нод. Нажмите Ctrl+C для остановки.")
+print("🚀 Starting node monitoring. Press Ctrl+C to stop.")
 try:
     while True:
         check_all_nodes()
-        print(f"⏳ Следующая проверка через {TELEGRAM_INTERVAL} сек...\n")
+        print(f"⏳ Next check in {TELEGRAM_INTERVAL} sec...\n")
         time.sleep(TELEGRAM_INTERVAL)
 except KeyboardInterrupt:
-    print("🛑 Мониторинг остановлен")
+    print("🛑 Monitoring stopped")
