@@ -1,55 +1,105 @@
 # 📡 Pipe Node Checker
 
-## Скрипт на Python для мониторинга PoP-нод в тестовой сети Pipe Network.
+## Python script for monitoring PoP nodes in the Pipe Network testnet.
 
-🧾 Чтение списка Node ID из файла
+🧾 Reads a list of Node IDs from a file
 
-📊 Вывод метрик в виде таблицы в консоли
+📊 Outputs key performance metrics in a formatted table in the terminal
 
-📬 Уведомления в Telegram в Markdown-формате
+📬 Sends notifications to Telegram in Markdown format
 
-### 📦 Установка и настройка
+---
 
-создайде и войдите в сессию tmux или screen (без разницы) что вам больше нравится
-```bash
-git clone https://github.com/noderguru/pipeNode-cheker-Stats.git
+First Check your `PoP ID` Go to your terminal and run:
+```
+curl -sk https://localhost/state && echo -e "\n"
+```
+- If you see your PoP id is `0`, Go here configure your `PoP ID` [HERE](https://github.com/SKaaalper/Pipe-Network-Testnet?tab=readme-ov-file#pop-id-error-guide)
+
+### 📦 Installation and Setup
+
+First, create and enter a session using either `tmux` or `screen` (choose whichever you prefer) to keep the script running in the background even after disconnecting from your terminal:
+
+1. Clone the Repo:
+```
+git clone https://github.com/SKaaalper/pipeNode-cheker-Stats.git
 cd pipeNode-cheker-Stats
 ```
-```bash
+
+2. Create and activate a virtual environment (recommended for dependency isolation):
+```
 python3 -m venv venv
 source venv/bin/activate
 ```
-```bash
+
+3. Install the required Python dependencies:
+```
 pip install requests beautifulsoup4 tabulate python-dotenv
 ```
-```bash
+
+4. Now configure your environment variables:
+```
 nano .env
 ```
-BOT_TOKEN — токен Telegram-бота. Создайте бота через @BotFather затем зайдите в него и нажмите start
 
-CHAT_ID — Получите ваш CHAT_ID через @userinfobot
+- **Add the following variables**:
 
-SEND_TELEGRAM — true или false  если false то данные будут выводится только в консоль
+- `BOT_TOKEN` — Telegram bot token.
+You can create a new bot via @BotFather. After creating the bot, open the bot in Telegram and press Start to activate it.
 
-TELEGRAM_INTERVAL — интервал между циклами отправки сообщений (в секундах)
+- `CHAT_ID` — Your Telegram Chat ID.
+You can retrieve this using @userinfobot. Just message the bot and it will return your numeric Chat ID.
 
-REQUEST_DELAY_MIN/MAX — задержки между запросами к разным нодам
-```bash
+- `SEND_TELEGRAM` — true or false.
+If set to true, the script will send status updates to Telegram. If set to false, updates will only be printed to the terminal.
+
+- `TELEGRAM_INTERVAL` — Interval between Telegram notifications, in seconds (e.g. 300 for 5 minutes).
+
+- `REQUEST_DELAY_MIN` / `REQUEST_DELAY_MAX` — Randomized delay range (in seconds) between checking each node, to avoid overloading the server.
+
+- Example `.env`:
+```
+BOT_TOKEN=123456789:ABCdEfGhIJklMnopQRsTuvwxYZ
+CHAT_ID=987654321
+SEND_TELEGRAM=true
+TELEGRAM_INTERVAL=300
+REQUEST_DELAY_MIN=5
+REQUEST_DELAY_MAX=10
+```
+
+5. Create your list of node IDs:
+```
 nano node_ids.txt
 ```
-вставьте pop_id каждый с новой строки. Можно получить в логах при старте ноды или из файла ```.pop_state.json``` или ```curl -sk https://localhost/state && echo -e "\n"``` (по желанию через пробел можете написать коментарий
-```bash
-python3 pipe_cheker.py
+- Inside this file, paste each node’s `pop_id`, one per line.
+- You can obtain these IDs in one of the following ways:
+- From the logs printed when your node starts.
+- From the `.pop_state.json` file in your node directory.
+
+By running:
 ```
-![image](https://github.com/user-attachments/assets/91f35ebb-0090-44d5-a374-e3285c168b31)
-
-![image](https://github.com/user-attachments/assets/f5c85d0c-ef84-4376-89ec-d1bbb193e913)
-
-
+curl -sk https://localhost/state && echo -e "\n"
+```
+![image](https://github.com/user-attachments/assets/fef2feca-1f2a-4854-be52-fd201069742b)
 
 
+6. (Optional) To keep the monitor running 24/7, keep it inside `tmux` or `screen`:
 
+- Using `screen`:
+```
+screen -S pipe-checker
+```
 
+- using `tmux`:
+```
+tmux new -s pipe-checker
+```
+
+- You can detach from the session anytime by pressing:
+  - **screen** detach: Press `Ctrl + A, Then Press `D`
+  - **tmux** detach: Press `Ctrl + B, Then Press `D`
+
+![image](https://github.com/user-attachments/assets/f58e076f-621c-4e95-a7e0-a30632bae902)
 
 
 
