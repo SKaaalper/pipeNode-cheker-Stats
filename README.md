@@ -96,8 +96,8 @@ tmux new -s pipe-checker
 ```
 
 - You can detach from the session anytime by pressing:
-  - **screen** detach: Press `Ctrl + A, Then Press `D`
-  - **tmux** detach: Press `Ctrl + B, Then Press `D`
+  - **screen** detach: Press `Ctrl + A, Then Press D`
+  - **tmux** detach: Press `Ctrl + B, Then Press D`
  
 ### 7. Start the script:
 ```
