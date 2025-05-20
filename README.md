@@ -45,10 +45,10 @@ nano .env
 - **Add the following variables**:
 
 - `BOT_TOKEN` — Telegram bot token.
-You can create a new bot via @BotFather. After creating the bot, open the bot in Telegram and press Start to activate it.
+You can create a new bot via [@BotFather](https://t.me/BotFather)). After creating the bot, open the bot in Telegram and press Start to activate it.
 
 - `CHAT_ID` — Your Telegram Chat ID.
-You can retrieve this using @userinfobot. Just message the bot and it will return your numeric Chat ID.
+You can retrieve this using [@userinfobot](https://t.me/userinfobot). Just message the bot and it will return your numeric Chat ID.
 
 - `SEND_TELEGRAM` — true or false.
 If set to true, the script will send status updates to Telegram. If set to false, updates will only be printed to the terminal.
