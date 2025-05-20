@@ -16,28 +16,28 @@ curl -sk https://localhost/state && echo -e "\n"
 ```
 - If you see your PoP id is `0`, Go here configure your `PoP ID` [HERE](https://github.com/SKaaalper/Pipe-Network-Testnet?tab=readme-ov-file#pop-id-error-guide)
 
-### 📦 Installation and Setup
+## 📦 Installation and Setup
 
 First, create and enter a session using either `tmux` or `screen` (choose whichever you prefer) to keep the script running in the background even after disconnecting from your terminal:
 
-1. Clone the Repo:
+### 1. Clone the Repo:
 ```
 git clone https://github.com/SKaaalper/pipeNode-cheker-Stats.git
 cd pipeNode-cheker-Stats
 ```
 
-2. Create and activate a virtual environment (recommended for dependency isolation):
+### 2. Create and activate a virtual environment (recommended for dependency isolation):
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install the required Python dependencies:
+### 3. Install the required Python dependencies:
 ```
 pip install requests beautifulsoup4 tabulate python-dotenv
 ```
 
-4. Now configure your environment variables:
+### 4. Now configure your environment variables:
 ```
 nano .env
 ```
@@ -67,7 +67,7 @@ REQUEST_DELAY_MIN=5
 REQUEST_DELAY_MAX=10
 ```
 
-5. Create your list of node IDs:
+### 5. Create your list of node IDs:
 ```
 nano node_ids.txt
 ```
@@ -83,7 +83,7 @@ curl -sk https://localhost/state && echo -e "\n"
 ![image](https://github.com/user-attachments/assets/fef2feca-1f2a-4854-be52-fd201069742b)
 
 
-6. (Optional) To keep the monitor running 24/7, keep it inside `tmux` or `screen`:
+### 6. (Optional) To keep the monitor running 24/7, keep it inside `tmux` or `screen`:
 
 - Using `screen`:
 ```
