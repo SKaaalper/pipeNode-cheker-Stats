@@ -98,8 +98,16 @@ tmux new -s pipe-checker
 - You can detach from the session anytime by pressing:
   - **screen** detach: Press `Ctrl + A, Then Press `D`
   - **tmux** detach: Press `Ctrl + B, Then Press `D`
+ 
+### 7. Start the script:
+```
+python3 pipe_cheker.py
+```
 
 ![image](https://github.com/user-attachments/assets/f58e076f-621c-4e95-a7e0-a30632bae902)
 
+### 8. Go to your telegram bot, check the result:
 
+![image](https://github.com/user-attachments/assets/ddfaac78-96d4-4904-a9f4-e5d947e0204f)
 
+Guide to run [Pipe Network Testnet](https://github.com/SKaaalper/Pipe-Network-Testnet)
