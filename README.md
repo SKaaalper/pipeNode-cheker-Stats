@@ -10,7 +10,7 @@
 
 ---
 
-First Check your `PoP ID` Go to your terminal and run:
+**First Check your `PoP ID` Go to your terminal and run**:
 ```
 curl -sk https://localhost/state && echo -e "\n"
 ```
