@@ -14,7 +14,7 @@
 ```
 curl -sk https://localhost/state && echo -e "\n"
 ```
-- If you see your PoP id is `0`, Go here configure your `PoP ID` [HERE](https://github.com/SKaaalper/Pipe-Network-Testnet?tab=readme-ov-file#pop-id-error-guide)
+- If your PoP ID is `0`, [Go HERE](https://github.com/SKaaalper/Pipe-Network-Testnet?tab=readme-ov-file#pop-id-error-guide) to configure your `PoP ID`
 
 ## 📦 Installation and Setup
 
